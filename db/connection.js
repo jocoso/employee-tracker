@@ -1,4 +1,8 @@
 const { Client } = require('pg');
+const fs = require('fs');
+const path = require('path');  
+const { exec } = require('child_process');
+
 require('dotenv').config();
 
 // Read connection parameters from environment variables
@@ -22,11 +26,23 @@ const client = new Client({
     database: database,
 });
 
+const executeSQLFile = async (filePath) => {
+    const sql = fs.readFileSync(filePath, 'utf8');
+    try {
+        await client.query(sql);
+        console.log(`Executed ${path.basename(filePath)} successfully.`);
+    } catch(err) {
+        console.error(`Error executing ${path.basename(filePath)}`, err.stack);
+    };
+}
+
 // Connect to the PostgreSQL database
 client.connect()
-    .then(() => {
+    .then(async () => {
         console.log('Connected to the database successfully');
-        return client.query('SELECT version();');
+        executeSQLFile(path.join(__dirname, "schema.sql"));
+        executeSQLFile(path.join(__dirname, "seeds.sql"));
+        return client.query('SELECT * FROM Departments');
     })
     .then(res => {
         console.log('Database version:', res.rows[0].version);
