@@ -13,13 +13,6 @@ const user = process.env.PG_USER;
 const password = process.env.PG_PASSWORD;
 const database = process.env.PG_DATABASE;
 
-console.log('PG_HOST:', host);
-console.log('PG_PORT:', port);
-console.log('PG_USER:', user);
-console.log('PG_PASSWORD:', password ? '*****' : null); // Mask the password
-console.log('PG_DATABASE:', database);
-
-
 
 
 async function getAllDepartments() {
