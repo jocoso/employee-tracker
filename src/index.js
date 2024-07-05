@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const queries = require('./queries.js');
 
 async function choiceAddDepartment() {
-    inquirer.prompt([
+    const result = await inquirer.prompt([
         {
             type: 'input', 
             name: 'depName', 
@@ -12,8 +12,9 @@ async function choiceAddDepartment() {
                 return true;
             }
         }
-    ])
-    .then(result => {queries.addDepartment(result.depName);});
+    ]);
+
+    queries.addDepartment(result.depName);
 }
 
 async function choiceAddRole() {
