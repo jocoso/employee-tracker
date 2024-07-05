@@ -78,7 +78,7 @@ npm test
 
 ## Questions
 
-If you have any questions about the project, please open an issue or contact me directly at [your-email@example.com](mailto:joshua.collado022@gmail.com). You can find more of my work at [jocoso](https://github.com/jocoso).
+If you have any questions about the project, please open an issue or contact me directly at [joshua.collado022@gmail.com](mailto:joshua.collado022@gmail.com). You can find more of my work at [jocoso](https://github.com/jocoso).
 
 ## Link to Walkthrough Video
 
