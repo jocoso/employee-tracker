@@ -30,7 +30,7 @@ async function getAllDepartments() {
         const departmentsResult = await client.query("SELECT * FROM departments;");
         const departments = departmentsResult.rows;
 
-        console.log('================================================================');
+        console.log('\n\n================================================================');
 
         for (const department of departments) {
 
@@ -38,7 +38,7 @@ async function getAllDepartments() {
 
         }
 
-        console.log('================================================================');
+        console.log('================================================================\n\n');
 
     } catch {
         console.error("Error connecting to the database:", error.stack);
@@ -85,7 +85,7 @@ async function getAllRoles() {
         const rolesResult = await client.query("SELECT * FROM roles;");
         const roles = rolesResult.rows;
 
-        console.log('================================================================');
+        console.log('\n\n================================================================');
 
         for(const role of roles) {
             
@@ -98,7 +98,7 @@ async function getAllRoles() {
         
         }
 
-        console.log('================================================================');
+        console.log('================================================================\n\n');
 
     } catch (err) {
         console.error("Error connecting to the database:", err.stack);
@@ -135,13 +135,13 @@ async function getAllEmployees() {
         const rowResults = await client.query(query);
         const results = rowResults.rows;
 
-        console.log('================================================================');
+        console.log('\n\n================================================================');
         for(const r of results) {
             console.log(`ID: ${r.employee_id} --- First Name: ${r.first_name} --- Last Name: ${r.last_name}`);
             console.log(`   Role: ${r.role_title}`);
             r.manager_first_name && console.log(`   Manager: ${r.manager_first_name} ${r.manager_last_name}`);
         }
-        console.log('================================================================');
+        console.log('================================================================\n\n');
     } catch (err) {
         console.error("Error connecting to the database:", err.stack);
     } finally {
